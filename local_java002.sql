@@ -1,0 +1,18 @@
+--Select no, title, writer, writedate, hit from board order by no;
+--
+--update board set hit = hit + 1 where no = 2;
+--
+--Select no, title, writer, content, writedate, hit from board where no = 2;
+--
+--commit;
+--
+--Select no, title, content, writer, writedate, hit from board order by no;
+--
+--insert into board(no, title, content, writer) values(board_seq.nextval, 'oracle', 'java jjang', 'lee');
+--commit;
+--
+--update board set title='big', content='oracle jjang', writer = 'song' where no =2;
+--commit;
+--
+--delete from board where no = 2;
+--rollback;
