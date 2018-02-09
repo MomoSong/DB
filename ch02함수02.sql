@@ -1,0 +1,2 @@
+--P86 2018.2.9
+SELECT ROUND(987.654, 2) "R1" FROM dual;
