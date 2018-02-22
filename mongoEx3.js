@@ -32,14 +32,9 @@ db.employees.find({ename:{$regex:'s.*h$', $options:'m'}}, {_id:0,empno:1,ename:1
 
 // $options : 'i' 대소문자 구별 안함. 'm' 대소문자 구별함
 
-db.employees.find({ename:{$regex:'^[a-zA-Z]{4,5}$',$options:'i'}},
-{_id:0,empno:1,ename:1})
+db.employees.find({ename:{$regex:'^[a-zA-Z]{4,5}$',$options:'i'}},{_id:0,empno:1,ename:1})
 
-
-
-
-
-
-
-
+//employees 에서 데이터 한개를 가져오자.
+db.employees.findOne()
+db.employees.find().skip((3-1)*3).limit(3)
 
