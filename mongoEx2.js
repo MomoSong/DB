@@ -1,3 +1,4 @@
+use test
 show collections
 /* select * from employees; */
 db.employees.find()
@@ -53,12 +54,10 @@ db.employees.distinct("deptno").sort()
 
 /* 부서번호 10인 사원들의 사원번호, 이름, job, 부서번호를 사원명으로 역순 정렬해서 가져오시오 
    select empno, ename, job, deptno from employees where deptno = 10 order by ename DESC */
-db.employees.find({deptno:10},
-{_id:0, empno:1, ename:1, job:1, deptno:1})
+db.employees.find({deptno:10}, {_id:0, empno:1, ename:1, job:1, deptno:1})
 .sort({ename:-1}) //sort({ename:1}) - 오름차순, sort({ename:-1}) - 내림차순
 
-db.employees.find({deptno:10},
-{_id:0, empno:1, ename:"", job:"", deptno:""})
+db.employees.find({deptno:10}, {_id:0, empno:1, ename:"", job:"", deptno:""})
 .sort({ename:-1}) //sort({ename:1}) - 오름차순, sort({ename:-1}) - 내림차순
 
 
