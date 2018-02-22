@@ -21,4 +21,25 @@ var res = db.employees.group({
 printjson(res)
 
 //정규식을 이용한 데이터 검색 -> 오라클의 like 연산자가 없어서
-db.employees.find({ename:{$regex:'^S.*h$', $options:'i'}}, {_id:0, empno:1, ename:1})
+// 'S.*H' -> S 글자가 먼저오고 H가 나중에 오는 문자열을 찾아라.
+// .: 한문자, *: 앞에 글자가 0번 이상 나온다.
+// S로 시작하고 H로 끝나는 문자열 : '^S.*H$'
+db.employees.find({ename:{$regex:'^S.*H$', $options:'i'}}, {_id:0, empno:1, ename:1})
+
+db.employees.find({ename:{$regex:'^s.*h$', $options:'i'}}, {_id:0, empno:1, ename:1})
+
+db.employees.find({ename:{$regex:'s.*h$', $options:'m'}}, {_id:0,empno:1,ename:1})
+
+// $options : 'i' 대소문자 구별 안함. 'm' 대소문자 구별함
+
+db.employees.find({ename:{$regex:'^[a-zA-Z]{4,5}$',$options:'i'}},
+{_id:0,empno:1,ename:1})
+
+
+
+
+
+
+
+
+
