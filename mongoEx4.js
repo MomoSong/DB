@@ -86,3 +86,18 @@ db.employees.find(
 	{_id:0, empno:1, sal:1}
 )
 
+/*
+사원 컬렉션에서 부서별 사원수와 급여의 총합계, 평균을 구하는 처리문을 aggregate를 이용해서 처리하시오.
+*/
+db.employees.aggregate([
+	{$match:{deptno:10, avg:{$avg:"$sal"}}},
+	{$project:{_id:0, empno:1, sal:1, ename:{$toLower:"$ename"}, job:{$toUpper:"$job"}}}
+])
+
+db.employees.aggregate([
+ {
+   $group:{_id:"$deptno", count:{$sum:1}, dept_total_sal:{$sum:"$sal"}, dept_avg_sal:{$avg:"$sal"}}
+ }
+])
+
+
