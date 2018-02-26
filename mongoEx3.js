@@ -7,7 +7,7 @@ db.employees.find()
 //몽고DB에서는 group(), aggregate(), mapReduce를 각각 이용해서 만들 수 있음
 db.employees.group({
 	key:{deptno:true}, // 그룹핑 하는 항목
-	cond:{hiredate:{$gte:"01-01-1980", $lte:"31-12-1981"}}, // 조건
+	cond:{hiredate:{$gte: ISODate("1980-0101"), $lte:ISODate("1981-12-31")}}, // 조건
 	reduce:function(obj,prev){prev.csum += obj.sal;}, // 한개의 데이터당 처리하는 내용
 	initial:{csum:0} // 초기값 세팅
 })
