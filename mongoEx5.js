@@ -62,10 +62,18 @@ var reduce_function = function(keySKU, values){
 	return reduceValue;
 }
 
+//map:추출데이터 -> reduce:처리 -> finalize : 추가처리(평균을 구한다.)
+var finalize_function = function(key, reducedValue){
+	reducedValue.average = 
+	reducedValue.qty / reducedValue.count;
+	return reducedValue;
+}
+
 db.order.mapReduce(
 	map_function,
 	reduce_function,
-	{out:"map_reduce_example"}
+	{out:"map_reduce_example", 
+	  finalize:finalize_function} 
 )
 
 db.map_reduce_example.find()
